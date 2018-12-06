@@ -4,7 +4,7 @@
 
 ## Backend
 
-Dependency Management in Go is not the best and I didn't get around using Go Dep and just put the whole folder inside $GOPATH/src/github/\<myusername>/\<this folder containing backend & frontend>
+Dependency Management in Go is not the best and I didn't get around using Go Dep and just put the whole folder inside **$GOPATH/src/github.com/\<myusername>/\<this folder containing backend & frontend>**
 
 Go dependencies used are Gin, Cors, Mgo, bson and standard packages like time, json & log
 
