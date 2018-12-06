@@ -20,7 +20,11 @@ You can run the go server using
 go run main.go routes.go
 ```
 
-
+Store your Mongo URI in an environment variable MONGO_DB_URL
+For Bash
+```
+export MONGO_DB_URL="mongodb://localhost:27017/<dbname>"
+```
 
 ## Frontend
 
