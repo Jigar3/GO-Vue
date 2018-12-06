@@ -17,11 +17,9 @@
                 </div>
 
                 <div class="field">
-                    <label for="auhtor">Author</label>
+                    <label for="author">Author</label>
                     <input type="text" v-model="author">
                 </div>
-
-                
                 <button type="submit" id="save">SAVE</button>
             </form>
         </section>

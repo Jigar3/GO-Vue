@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import NewBlog from '../src/components/NewBlog.vue'
 import Blog from "./views/Blog.vue"
+import Edit from "../src/components/Edit.vue"
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/new',
       name: 'new',
       component: NewBlog
+    },
+    {
+      path: '/update/:id',
+      name: 'update',
+      component: Edit
     }
   ]
 })

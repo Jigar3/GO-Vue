@@ -119,6 +119,7 @@ func deletePost(c *gin.Context) {
 
 func updatePost(c *gin.Context) {
 	type blogUpdate struct {
+		Title   string `bson:"title json:"title" binding:"required"`
 		Content string `bson:"content" json:"content" binding:"required"`
 	}
 
@@ -136,7 +137,7 @@ func updatePost(c *gin.Context) {
 
 	id := bson.ObjectIdHex(c.Param("id"))
 
-	if err := DB.C("posts").Update(bson.M{"_id": id}, bson.M{"$set": bson.M{"content": blog.Content}}); err != nil {
+	if err := DB.C("posts").Update(bson.M{"_id": id}, bson.M{"$set": bson.M{"content": blog.Content, "title": blog.Title}}); err != nil {
 		log.Print(err)
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"message": "Can't find the blog to update",
