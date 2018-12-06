@@ -5,10 +5,10 @@
     <section class="container">
       <div class="card" v-for="blog in content" :key="blog.id">
         <h4>
-          <router-link to="/blog">{{ blog.title }}</router-link>
+          <router-link v-bind:to="{ name: 'blog', params: { id: blog.id }}">{{ blog.title }}</router-link>
         </h4>
         <h2>{{blog.author}} <span style="font-weight: 500" >|</span> {{ blog.time.slice(0,16) }}</h2>
-        <p>{{ blog.content }}</p>
+        <p>{{ blog.content.slice(0,200) }}....... <span><router-link v-bind:to="{ name: 'blog', params: { id: blog.id }}">READ MORE</router-link></span> </p>
       </div>
     </section>
 
@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 import "reset-css";
 import axios from "axios";
 import Cover from "./Cover";
@@ -54,12 +54,10 @@ export default {
   margin-top: calc(5%);
 }
 
-h4,
-h4 a {
+h4, h4 a {
   font-family: "Open Sans Condensed", sans-serif;
   font-size: 28px;
   margin-bottom: 20px;
-  cursor: pointer;
   text-decoration: none;
   color: black;
 }
@@ -74,6 +72,7 @@ p {
   font-family: "PT Sans", sans-serif;
   font-size: 16px;
   margin-bottom: calc(8%);
+  line-height: 23px;
 }
 
 svg {
@@ -84,5 +83,12 @@ svg {
   width: calc(10%);
   fill: #79cac1;
   cursor: pointer;
+}
+
+
+span, span a {
+  text-decoration: none;
+  color: #1F2230;
+  font-weight: 500;
 }
 </style>

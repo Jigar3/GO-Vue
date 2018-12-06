@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #arrow {
     position: relative;
     left: calc(5%);
