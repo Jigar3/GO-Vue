@@ -1,21 +1,18 @@
 <template>
   <div class="blog">
-    <div class="cover">
-      <img src="../assets/cover.jpg" alt id="bgcover">
-      <p class="overlay-text">Thoughts in Words</p>
-    </div>
+    <Cover />
 
     <section class="container">
-      <div class="card" v-for="blog in content" :key="blog.title">
+      <div class="card" v-for="blog in content" :key="blog.id">
         <h4>
-          <router-link to="/about">{{ blog.title }}</router-link>
+          <router-link to="/blog">{{ blog.title }}</router-link>
         </h4>
-        <!-- <h2>{{blog.author}} | {{ blog.date }}</h2> -->
+        <h2>{{blog.author}} <span style="font-weight: 500" >|</span> {{ blog.time.slice(0,16) }}</h2>
         <p>{{ blog.content }}</p>
       </div>
     </section>
 
-    <router-link to="/about">
+    <router-link to="/new">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M0 0h24v24H0z" fill="none"></path>
         <path
@@ -29,6 +26,7 @@
 <script>
 import "reset-css";
 import axios from "axios";
+import Cover from "./Cover";
 
 export default {
   name: "Main",
@@ -41,31 +39,14 @@ export default {
     axios.get("http://localhost:8000/view").then(data => {
       return this.content = data.data;
     })
+  },
+  components: {
+    Cover
   }
 };
 </script>
 
 <style scoped>
-.cover {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-#bgcover {
-  max-height: 250px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 80px;
-  font-family: "Righteous", cursive;
-}
 
 .container {
   margin: 0 auto;

@@ -16,6 +16,7 @@ type Blog struct {
 	Title     string        `bson:"title" json:"title" binding:"required"`
 	Content   string        `bson:"content" json:"content" binding:"required"`
 	CreatedAt string        `bson:"time" json:"time"`
+	Author    string        `bson:"author" json:"author"`
 }
 
 // DB export
@@ -50,12 +51,12 @@ func createPost(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"message": "Missing request parameters",
 		})
-
 		return
 	}
 
 	blog.ID = bson.NewObjectId()
 	blog.CreatedAt = time.Now().String()
+	// blog.Author = "Jigar Chavada"
 
 	if err := DB.C("posts").Insert(blog); err != nil {
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
