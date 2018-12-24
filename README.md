@@ -4,19 +4,16 @@
 
 ## Backend
 
-Dependency Management in Go is not the best and I didn't get around using Go Dep and just put the whole folder inside **$GOPATH/src/github.com/\<myusername>/\<this folder containing backend & frontend>**
+~~Dependency Management in Go is not the best and I didn't get around using Go Dep and just put the whole folder inside **$GOPATH/src/github.com/\<myusername>/\<this folder containing backend & frontend>**~~
+
+Now it uses Go Dep so no problems. Clone it anywhere you want.
 
 Go dependencies used are Gin, Cors, Mgo, bson and standard packages like time, json & log
 
-```
-go get "github.com/gin-contrib/cors"
-go get "github.com/gin-gonic/gin"
-go get "gopkg.in/mgo.v2"
-go get "gopkg.in/mgo.v2/bson"
-```
 
 You can run the go server using 
 ```
+cd backend/
 go run main.go routes.go
 ```
 
