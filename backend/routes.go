@@ -25,7 +25,13 @@ var DB *mgo.Database
 // NewRouter export
 func NewRouter() *gin.Engine {
 	router := gin.Default()
-	router.Use(cors.Default())
+
+	config := cors.DefaultConfig()
+	config.AllowMethods =
+		[]string{"GET", "PATCH", "POST", "DELETE"}
+	config.AllowAllOrigins = true
+
+	router.Use(cors.New(config))
 
 	router.GET("/", sayAlive)
 	router.GET("/view", getAll)
